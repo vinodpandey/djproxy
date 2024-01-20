@@ -1,6 +1,6 @@
 import re
 
-from django.conf.urls import url
+from django.urls import re_path
 from six import iteritems
 
 from djproxy.views import HttpProxy
@@ -82,6 +82,6 @@ def generate_routes(config):
 
         proxy_view_function.csrf_exempt = config.get('csrf_exempt', True)
 
-        routes.append(url(pattern, proxy_view_function, name=name))
+        routes.append(re_path(pattern, proxy_view_function, name=name))
 
     return routes
